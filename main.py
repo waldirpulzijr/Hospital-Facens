@@ -1,3 +1,5 @@
+from operacoes.operacoes import Operacao
+
 class Initialize():
 
     def show_menu(self):
@@ -42,6 +44,18 @@ class Initialize():
             print('\nOpção inválida!')
 
         return sub_option
+    
+    def to_add(self, option):
+        print('\n')
+
+        if option == '1':
+            nome = input('Informe o nome do paciente: ')
+            cpf  = input('Informe o cpf do paciente: ')
+            data_nasc = input('Informe a data de nascimento do paciente: ')
+        
+            operacoes = Operacao()
+            operacoes.Pacientes(option, nome, cpf, data_nasc)
+            operacoes.save()
 
     def to_go_out(self):
         print('\nObrigado, volte sempre!')
@@ -61,13 +75,13 @@ if __name__ == "__main__":
                 init.show_sub_menu(option)
                 sub_option = init.choose_sub_option()
 
-                if sub_option == '1': ### Pacientes
+                if sub_option == '1': ### Cadastrar
+                    init.to_add(option)
+
+                elif sub_option == '2': ### Listar
                     pass
 
-                elif sub_option == '2': ### Consultas
-                    pass
-
-                elif sub_option == '3': ### Procedimentos
+                elif sub_option == '3': ### Excluir
                     pass
 
         elif option == '4':
