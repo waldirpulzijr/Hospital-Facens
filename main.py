@@ -30,7 +30,7 @@ class Initialize():
             print('Procedimentos:')
         print(50 * '-')
 
-        print('1 - Cadatrar')
+        print('1 - Cadastrar')
         print('2 - Listar')
         print('3 - Excluir')
         print('4 - Voltar') 
