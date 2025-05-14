@@ -3,7 +3,7 @@ class Initialize():
     def show_menu(self):
         print('\n')
         print(50 * '-')
-        print('Bem-vindo ao Sistema do Hospital!')
+        print('Bem-vindo ao Sistema Hospital - 2025!')
         print(50 * '-')
 
         print('1 - Pacientes')
