@@ -3,7 +3,7 @@ class Configuracoes():
         self.__file_pacientes = './bancos/pacientes.csv'
         self.__file_consultas = './bancos/consultas.csv'
         self.__file_procedimentos = './bancos/procedimentos.csv'
-        self.__file_logs = './logs/log.txt'
+        self.__file_logs = './logs/log.txt' 
     
     @property
     def file_pacientes(self):
