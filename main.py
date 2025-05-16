@@ -1,7 +1,18 @@
-from operacoes.operacoes import Operacao
+from entidades.pacientes import Paciente
+from entidades.pacientes import ListarPacientes
+from operacoes.pacientes import OperacoesPaciente
 
 class Initialize():
 
+    def __init__(self):
+        self.count_lista_pacientes = 0
+
+    def load_classes(self):
+        operacao_paciente = OperacoesPaciente()
+        lista_pacientes = ListarPacientes()
+        lista_pacientes = operacao_paciente.load() 
+        self.count_lista_pacientes = len(lista_pacientes.listar())
+        
     def show_menu(self):
         print('\n')
         print(50 * '-')
@@ -52,16 +63,18 @@ class Initialize():
             nome = input('Informe o nome do paciente: ')
             cpf  = input('Informe o cpf do paciente: ')
             data_nasc = input('Informe a data de nascimento do paciente: ')
-        
-            operacoes = Operacao()
-            operacoes.Pacientes(option, nome, cpf, data_nasc)
-            operacoes.save()
+
+            self.count_lista_pacientes += 1
+            paciente = Paciente(self.count_lista_pacientes, nome, cpf, data_nasc)
+            operacao_paciente = OperacoesPaciente(paciente)
+            operacao_paciente.save()
 
     def to_go_out(self):
         print('\nObrigado, volte sempre!')
 
 if __name__ == "__main__":
     init = Initialize()
+    init.load_classes()
     option = ''
 
     while option != '4':
