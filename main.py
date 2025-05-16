@@ -1,18 +1,16 @@
 from entidades.pacientes import Paciente
-from entidades.pacientes import ListarPacientes
+from entidades.pacientes import ListarPaciente
 from operacoes.pacientes import OperacoesPaciente
 
 class Initialize():
 
     def __init__(self):
-        self.count_lista_pacientes = 0
+        self.operacao_paciente = OperacoesPaciente()
+        self.lista_pacientes = ListarPaciente()
 
     def load_classes(self):
-        operacao_paciente = OperacoesPaciente()
-        lista_pacientes = ListarPacientes()
-        lista_pacientes = operacao_paciente.load() 
-        self.count_lista_pacientes = len(lista_pacientes.listar())
-        
+        self.lista_pacientes = self.operacao_paciente.load() 
+
     def show_menu(self):
         print('\n')
         print(50 * '-')
@@ -64,10 +62,19 @@ class Initialize():
             cpf  = input('Informe o cpf do paciente: ')
             data_nasc = input('Informe a data de nascimento do paciente: ')
 
-            self.count_lista_pacientes += 1
-            paciente = Paciente(self.count_lista_pacientes, nome, cpf, data_nasc)
-            operacao_paciente = OperacoesPaciente(paciente)
-            operacao_paciente.save()
+            count_lista_pacientes = len(self.lista_pacientes.listar()) + 1
+            paciente = Paciente(count_lista_pacientes, nome, cpf, data_nasc)
+
+            self.operacao_paciente.paciente = paciente
+            self.operacao_paciente.save()
+            init.load_classes()
+
+    def to_listar(self, option):
+        print('\n')
+
+        if option == '1':
+            for paciente in self.lista_pacientes.listar():
+                print(f'Codigo: {paciente.codigo} - Nome: {paciente.nome} - CPF: {paciente.cpf} - Data de Nasc.: {paciente.data_nasc}')
 
     def to_go_out(self):
         print('\nObrigado, volte sempre!')
@@ -92,7 +99,7 @@ if __name__ == "__main__":
                     init.to_add(option)
 
                 elif sub_option == '2': ### Listar
-                    pass
+                    init.to_listar(option)
 
                 elif sub_option == '3': ### Excluir
                     pass
