@@ -7,7 +7,7 @@ class Paciente():
     self.cpf = cpf
     self.data_nasc = data_nasc
 
-class ListarPacientes():
+class ListarPaciente():
   def __init__(self):
     self.lista = []
 
