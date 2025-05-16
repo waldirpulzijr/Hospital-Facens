@@ -21,3 +21,11 @@ class ProcessarPaciente():
         with open(self.__configurations.file_pacientes, 'a', newline='', encoding='UTF-8') as arquivo:
             escritor = csv.writer(arquivo, delimiter=',')
             escritor.writerow(registro_paciente)
+
+    def filter_file(self, codigo):
+        lista = self.read_file() 
+        with open(self.__configurations.file_pacientes, 'w', newline='', encoding='UTF-8') as arquivo:
+            escritor = csv.writer(arquivo, delimiter=',')
+            for paciente in lista:
+                if paciente[0] != codigo:
+                    escritor.writerow(paciente)
