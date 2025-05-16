@@ -76,6 +76,14 @@ class Initialize():
             for paciente in self.lista_pacientes.listar():
                 print(f'Codigo: {paciente.codigo} - Nome: {paciente.nome} - CPF: {paciente.cpf} - Data de Nasc.: {paciente.data_nasc}')
 
+    def to_excluir(self, option):
+        print('\n')
+
+        if option == '1':
+            codigo = input('Informe o codigo do paciente a ser excluido: ')
+            self.operacao_paciente.excluir(codigo)
+            init.load_classes()
+
     def to_go_out(self):
         print('\nObrigado, volte sempre!')
 
@@ -102,7 +110,7 @@ if __name__ == "__main__":
                     init.to_listar(option)
 
                 elif sub_option == '3': ### Excluir
-                    pass
+                    init.to_excluir(option)
 
         elif option == '4':
             init.to_go_out()

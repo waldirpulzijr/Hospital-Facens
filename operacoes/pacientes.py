@@ -29,3 +29,8 @@ class OperacoesPaciente():
         self.__processar.wrote_file(
             self.__paciente
         )
+
+    def excluir(self, codigo):
+        self.__processar.filter_file(
+            codigo
+        )
