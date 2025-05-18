@@ -31,14 +31,14 @@ class Initialize():
         return option
 
     def show_sub_menu(self, option):
-        print('\n')
+        print('\n') 
         print(50 * '-')
-        if (option == '1'):
+        if (option == '1'): 
             print('Pacientes:')
         elif (option == '2'):
             print('Consultas:')
         elif (option == '3'):
-            print('Procedimentos:')
+            print('Procedimentos:') 
         print(50 * '-')
 
         print('1 - Cadastrar')
